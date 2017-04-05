@@ -21,7 +21,7 @@ Enter your node-red directory then install with npm, eg:
 
 * js-sha256
 * request
-* openSPOT firmware version > 101
+* openSPOT firmware version 095+
 
 ## Settings
 
