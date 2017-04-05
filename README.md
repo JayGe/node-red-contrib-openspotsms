@@ -1,12 +1,14 @@
 # node-red-contrib-openspotsms
 
-A node to allow DMR SMS messages to be passed to a SharkRF openSPOT using its HTTP API.
+A Node-Red module to allow DMR SMS messages to be sent using the SharkRF openSPOT.
 
-This node takes a text string and will send it to a DMR ID via a configured openSPOT.
+This node will take a text string and send an SMS message to the configured DMR radio via the openSPOT HTTP API.
 
-A number of openSPOT devices could be configured, a new token is requested every 20 minutes.
+An earlier implementation of this is described in the blog post linked below where it was being used to send SMS messages to the DMR ID on a new DXCC spots. 
 
-- GitHub:  https://github.com/jayge/node-red-contrib-openspotsms
+https://x8x.net/2016/09/27/dmr-sms-alerts-using-the-sharkrf-openspot-with-node-red/
+
+John - GI7UGV
 
 ## Install
 
