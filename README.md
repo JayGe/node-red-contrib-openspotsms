@@ -12,8 +12,8 @@ A number of openSPOT devices could be configured, a new token is requested every
 
 Enter your node-red directory then install with npm, eg:
 
- cd $HOME/.node-red
- npm install node-red-contrib-openspotsms
+    cd $HOME/.node-red
+    npm install node-red-contrib-openspotsms
 
 ## Dependencies 
 
@@ -24,19 +24,19 @@ Enter your node-red directory then install with npm, eg:
 
 SMS Node 
 
-* openSPOT - Configure the openSPOT server.
-* Destination - DMR Destination ID number, this might be your own radio ID connected to the openSPOT.
-* Source - DMR Source ID number.
-* Format - Configure openSPOT SMS message format.
-* To Modem - Sends over RF (true) or the network (false).
-* Call Type - Private or Group.
-* Name - Node name, leave blank for default.
+* `openSPOT` - Configure the openSPOT server.
+* `Destination` - DMR Destination ID number, this might be your own radio ID connected to the openSPOT.
+* `Source` - DMR Source ID number.
+* `Format` - Configure openSPOT SMS message format.
+* `To Modem` - Sends over RF (true) or the network (false).
+* `Call Type` - Private or Group.
+* `Name` - Node name, leave blank for default.
 
 Server Settings
 
-* Host/IP - Hostname or IP, openspot by default on local network.
-* Port - Port number, 80 by default.
-* Password - openSPOT password, openspot by default.
+* `Host/IP` - Hostname or IP, openspot by default on local network.
+* `Port` - Port number, 80 by default.
+* `Password` - openSPOT password, openspot by default.
 
 ## TODO
 
