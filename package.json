@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-openspotsms",
   "version": "0.1.1",
-  "description": "Send DMR SMS messages via the openSPOT HTTP api",
+  "description": "Send DMR SMS messages via the SharkRF openSPOT HTTP API",
   "main": "index.js",
   "scripts": {},
   "author": {
