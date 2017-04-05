@@ -13,8 +13,7 @@
   ],
   "dependencies": {
     "js-sha256": "^0.4.0",
-    "request": "^2.8.0",
-    "path": ""
+    "request": "^2.8.0"
   },
   "homepage": "https://github.com/JayGe/node-red-contrib-openspotsms",
   "license": "MIT",
