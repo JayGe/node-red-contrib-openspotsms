@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-openspotsms",
-  "version": "0.1.0",
-  "description": "Send SMS messages via the openSPOT HTTP api",
+  "version": "0.1.1",
+  "description": "Send DMR SMS messages via the openSPOT HTTP api",
   "main": "index.js",
   "scripts": {},
   "author": {

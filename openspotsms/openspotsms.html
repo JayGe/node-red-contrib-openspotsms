@@ -9,9 +9,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 -->
 
 <script type="text/x-red" data-help-name="openspot">
-    <p>Sends a DMR SMS message via an openSPOT.</p>
+    <p>Sends a DMR SMS message via a SharkRF openSPOT.</p>
 
-	<p>This node takes a text string and will send it to a configured DMR ID via a configured openSPOT.</p>
+	<p>This node takes a text string and will send it to a DMR ID via a configured openSPOT.</p>
 
 	<p>A number of openSPOT devices could be configured, each will request a token every 20 minutes.</p>
 
@@ -22,6 +22,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<li><code>Source</code> - DMR Source ID number. </li>	
 	<li><code>Format</code> - Configure openSPOT SMS message format.</li>	
 	<li><code>To Modem</code> - Sends over the RF (true) or the network (false).</li>	
+	<li><code>Call Type</code> - Private or group.</li>	
 	<li><code>Name</code> - Node name, leave blank for default.</li>	
 	</ul>
 </script>
@@ -33,7 +34,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     </div>
     <div class="form-row">
         <label for="node-input-dstid"><i class="fa fa-id-card-o"></i> Destination</label>
-        <input type="text" id="node-input-dstid" placeholder="2355224">
+        <input type="text" id="node-input-dstid">
     <div class="form-row">
         <label for="node-input-srcid"><i class="fa fa-id-card-o"></i> Source</label>
         <input type="text" id="node-input-srcid" placeholder="9998">
@@ -53,7 +54,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             <option value="0">False</option>
         </select>
     </div>
-
+    <div class="form-row">
+        <label for="node-input-calltype"><i class="fa fa-arrows"></i> Call Type</label>
+        <select type="text" id="node-input-calltype" style="display: inline-block; vertical-align: middle; width:70%;">
+            <option value="0" selected="selected">Private</option>
+            <option value="1">Group</option>
+        </select>
+    </div>
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
@@ -68,9 +75,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         defaults: {
             name: {value:""},
             openspotserver: {type:"openspot-server", required:true},
-            dstid: {value:"",required:true},
-			srcid: {value:"9998",required:true},
-	//		calltype: {},
+            dstid: {value:"", required:true},
+			srcid: {value:"9998", required:true},
+			calltype: {value:"0", required:true},
 			tomodem: {value:"1", required:true},
 			format: {value:"1", required:true}
         },

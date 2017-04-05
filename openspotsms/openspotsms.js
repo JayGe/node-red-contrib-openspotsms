@@ -25,11 +25,6 @@ module.exports = function(RED) {
         this.port = n.port;
         this.password = n.password;
 
-//		this.warn("password:" + this.password);
-//		this.warn("dstid:" + this.dstid);
-//		this.warn("server:" + this.server);
-//		this.warn("port:" + this.port);
-
 		doLogin(node.password, node.server, node.port);
 
 		var minutes = 20, the_interval = minutes * 60 * 1000;
@@ -51,6 +46,7 @@ module.exports = function(RED) {
 		this.password = n.password || this.osserverConfig.password;
 
         this.dstid = n.dstid;
+        this.calltype = n.calltype;
         this.srcid = n.srcid;
 		this.format = n.format;
 		this.tomodem = n.tomodem;
@@ -58,9 +54,7 @@ module.exports = function(RED) {
 		var url = "http://" + this.server + ":" + this.port + "/status-dmrsms.cgi";
 
 		this.on('input', function(msg) {
-
 //			console.log(msg.payload);
-//			console.log(loginstatus);
 
 			var sms_msg = msg.payload;
 			sms_msg = sms_msg.substring(0,75);
@@ -75,7 +69,7 @@ module.exports = function(RED) {
 	            body: {	"only_save":0,
 						"intercept_net_msgs":0,
 						"send_dstid":this.dstid, 
-						"send_calltype":0,
+						"send_calltype":this.calltype,
 						"send_srcid":this.srcid,
 						"send_format":this.format,
 						"send_tdma_channel":0,
@@ -159,7 +153,7 @@ function Login(token, digest, host, port) {
 function toHex(str) {
 	var hex = '';
 	for(var i=0;i<str.length;i++) {
-		hex += ("000"+str.charCodeAt(i).toString(16)).slice(-4);
+		hex += ("000"+str.charCodeAt(i).toString(16)).slice(-4); // UTF16BE
 	}
 	return hex;
 }

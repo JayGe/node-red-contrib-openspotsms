@@ -30,7 +30,6 @@ A number of openSPOT devices could be configured, each will request a new token 
 
 * Status indicators
 * Add credential type
-* All configurable settings
 * Better error handling
 * Comments
 * Receive SMS
