@@ -8,6 +8,10 @@
     "name": "gi7ugv",
     "url": "https://github.com/JayGe"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JayGe/node-red-contrib-openspotsms.git"
+  },
   "keywords": [
     "node-red"
   ],
