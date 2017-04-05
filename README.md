@@ -8,6 +8,13 @@ A number of openSPOT devices could be configured, a new token is requested every
 
 - GitHub:  https://github.com/jayge/node-red-contrib-openspotsms
 
+## Install
+
+Enter your node-red directory then install with npm, eg:
+
+ cd $HOME/.node-red
+ npm install node-red-contrib-openspotsms
+
 ## Dependencies 
 
 * js-sha256
