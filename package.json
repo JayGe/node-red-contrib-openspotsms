@@ -1,0 +1,26 @@
+{
+  "name": "node-red-contrib-openspotsms",
+  "version": "0.1.0",
+  "description": "Send SMS messages via the openSPOT HTTP api",
+  "main": "index.js",
+  "scripts": {},
+  "author": {
+    "name": "gi7ugv",
+    "url": "https://github.com/JayGe"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "dependencies": {
+    "js-sha256": "^0.4.0",
+    "request": "^2.8.0",
+    "path": ""
+  },
+  "homepage": "https://github.com/JayGe/node-red-contrib-openspotsms",
+  "license": "MIT",
+  "node-red": {
+    "nodes": {
+      "openspotsms": "openspotsms/openspotsms.js"
+    }
+  }
+}
