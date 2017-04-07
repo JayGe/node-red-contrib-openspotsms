@@ -114,7 +114,7 @@ function GetTok(host, port) {
         request(options, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 resolve(body.token);
-            } else if (error.code == "ENOTFOUND") {
+            } else if (error && error.code == "ENOTFOUND") {
 				reject("DNS resolution of " + error.hostname + " failed");
             } else if (error) {
 				loginstatus = "2"
