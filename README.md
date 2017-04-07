@@ -37,7 +37,7 @@ SMS Node
 
 Server Settings
 
-* `Host/IP` - Hostname or IP, openspot by default on local network.
+* `Host/IP` - Hostname or IP, openspot by default on local network, try openspot.local if having issues.
 * `Port` - Port number, 80 by default.
 * `Password` - openSPOT password, openspot by default.
 

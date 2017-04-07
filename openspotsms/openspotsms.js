@@ -54,7 +54,10 @@ module.exports = function(RED) {
 		var url = "http://" + this.server + ":" + this.port + "/status-dmrsms.cgi";
 
 		this.on('input', function(msg) {
-//			console.log(msg.payload);
+			if (!jwt) {
+				console.log("Not logged in, message not sent.");
+				return;
+			}
 
 			var sms_msg = msg.payload;
 			sms_msg = sms_msg.substring(0,75);
@@ -79,8 +82,8 @@ module.exports = function(RED) {
 				}
    	     	}
 			request(options, function (error, response, body) {
-				if (!error && response.statusCode == 200) { // add check for success
 //					console.log(body)
+				if (!error && response.statusCode == 200) { // add check for success
 //					body.send_success;
 				} else if (error) {
 					console.log("SMS Post Failed");
@@ -111,6 +114,8 @@ function GetTok(host, port) {
         request(options, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 resolve(body.token);
+            } else if (error.code == "ENOTFOUND") {
+				reject("DNS resolution of " + error.hostname + " failed");
             } else if (error) {
 				loginstatus = "2"
                 reject(error);
@@ -137,13 +142,16 @@ function Login(token, digest, host, port) {
             if (!error && response.statusCode == 200) {
                 jwt = body.jwt;
 //                console.log("Token: "+ token + " Digest: " + digest + " JWT: " + jwt)
-				loginstatus = "1"
+				loginstatus = "1";
                 resolve(jwt);
+            } else if (response.statusCode == 401) {
+				loginstatus = "3";
+				reject("Authentication failed with 401 response, check password.");
             } else if (error) {
-				loginstatus = "3"
+				loginstatus = "3";
                 reject(error);
             } else {
-				loginstatus = "3"
+				loginstatus = "3";
                 reject("Login request failed for some reason.");
             }
         })
@@ -167,10 +175,13 @@ function doLogin(password, host, port) {
                     return Login(value, digest, host, port);
             },
             function (reason) {
-                console.error('Something went wrong during token request', reason);
+                console.error('Something went wrong during token request:', reason);
         })
         .then(
             function (value2) {
                 jwt = value2;
-        });
+        },
+		function (reason) {
+                console.error('Something went wrong during authentication:', reason);
+		});
 }
